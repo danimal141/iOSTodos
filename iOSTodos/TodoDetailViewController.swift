@@ -10,6 +10,8 @@ import UIKit
 
 class TodoDetailViewController: UIViewController {
 
+    @IBOutlet weak var textLabel: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +23,18 @@ class TodoDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func dismissViewController() {
+        //※Can not use dismissViewControllerAnimated
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func save(sender: AnyObject) {
+        self.dismissViewController()
+    }
 
+    @IBAction func cancel(sender: AnyObject) {
+        self.dismissViewController()
+    }
     /*
     // MARK: - Navigation
 

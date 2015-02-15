@@ -29,7 +29,7 @@
                     <navigationItem key="navigationItem" title="Todos" id="4ep-gR-vy3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rot-ZI-llG">
                             <connections>
-                                <segue destination="UTv-gE-KEh" kind="show" id="4yz-tO-o81"/>
+                                <segue destination="UTv-gE-KEh" kind="show" id="0Wc-T8-og4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -64,9 +64,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Todo Detail" id="YQl-X0-NhY">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zmp-VL-Vlr"/>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="wIg-5Z-SeS"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zmp-VL-Vlr">
+                            <connections>
+                                <action selector="cancel:" destination="UTv-gE-KEh" id="133-qb-MTb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="wIg-5Z-SeS">
+                            <connections>
+                                <action selector="save:" destination="UTv-gE-KEh" id="QLs-09-5xJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="textLabel" destination="Rqb-t3-I9h" id="NKF-oz-QpX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeY-By-7cl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
