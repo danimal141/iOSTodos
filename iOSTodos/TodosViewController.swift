@@ -46,6 +46,12 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
         return cell
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let managedObject: NSManagedObject = fetchedResultController.objectAtIndexPath(indexPath) as NSManagedObject
+        managedObjectContext?.deleteObject(managedObject)
+        managedObjectContext?.save(nil)
+    }
+    
     func getFetchedResultController() -> NSFetchedResultsController {
         fetchedResultController = NSFetchedResultsController(fetchRequest: self.todoFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultController
