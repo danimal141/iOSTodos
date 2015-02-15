@@ -79,7 +79,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="textLabel" destination="Rqb-t3-I9h" id="NKF-oz-QpX"/>
+                        <outlet property="textField" destination="Rqb-t3-I9h" id="a3q-2Y-v8v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeY-By-7cl" userLabel="First Responder" sceneMemberID="firstResponder"/>

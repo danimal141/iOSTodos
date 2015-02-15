@@ -11,7 +11,7 @@ import CoreData
 
 class TodoDetailViewController: UIViewController {
 
-    @IBOutlet weak var textLabel: UITextField!
+    @IBOutlet weak var textField: UITextField!
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     var todo: Todos?
@@ -20,7 +20,7 @@ class TodoDetailViewController: UIViewController {
         super.viewDidLoad()
         
         if todo != nil {
-            self.textLabel.text = todo?.content
+            self.textField.text = todo?.content
         }
     }
 
@@ -32,17 +32,32 @@ class TodoDetailViewController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    func showAlert() {
+        let alertController = UIAlertController(title: "Error", message: "Content is empty!", preferredStyle: .Alert)
+        let dafaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(dafaultAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func checkContentAndSave() {
+        var error: NSError?
+        if !managedObjectContext!.save(&error) {
+            showAlert()
+            managedObjectContext!.rollback()
+        }
+    }
+    
     func createTodo() {
-        let entityDescripition = NSEntityDescription.entityForName("Todos", inManagedObjectContext: managedObjectContext!)
-        let todo = Todos(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
+        let entity = NSEntityDescription.entityForName("Todos", inManagedObjectContext: managedObjectContext!)
+        let todo = Todos(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
         
-        todo.content = self.textLabel.text
-        managedObjectContext?.save(nil)
+        todo.content = self.textField.text
+        self.checkContentAndSave()
     }
     
     func editTodo() {
-        todo?.content = self.textLabel.text
-        managedObjectContext?.save(nil)
+        todo?.content = self.textField.text
+        self.checkContentAndSave()
     }
     
     @IBAction func save(sender: AnyObject) {
