@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ghy-e4-F0V">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Todos-->
@@ -26,12 +27,50 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Todos" id="4ep-gR-vy3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rot-ZI-llG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rot-ZI-llG">
+                            <connections>
+                                <segue destination="UTv-gE-KEh" kind="show" id="4yz-tO-o81"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ME-Fe-1GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1055" y="141"/>
+        </scene>
+        <!--Todo Detail-->
+        <scene sceneID="qoc-HH-1oi">
+            <objects>
+                <viewController id="UTv-gE-KEh" customClass="TodoDetailViewController" customModule="iOSTodos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z4F-GA-Zun"/>
+                        <viewControllerLayoutGuide type="bottom" id="9i3-Kc-Zd3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2dI-AQ-fL4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rqb-t3-I9h">
+                                <rect key="frame" x="36" y="104" width="528" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rqb-t3-I9h" firstAttribute="leading" secondItem="2dI-AQ-fL4" secondAttribute="leadingMargin" constant="20" id="9Yf-Zy-CWk"/>
+                            <constraint firstItem="Rqb-t3-I9h" firstAttribute="top" secondItem="z4F-GA-Zun" secondAttribute="bottom" constant="40" id="nw5-NK-hoX"/>
+                            <constraint firstItem="Rqb-t3-I9h" firstAttribute="centerX" secondItem="2dI-AQ-fL4" secondAttribute="centerX" id="vsI-dH-FNm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Todo Detail" id="YQl-X0-NhY">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zmp-VL-Vlr"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="wIg-5Z-SeS"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yeY-By-7cl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1797" y="147"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qiS-3q-F75">
