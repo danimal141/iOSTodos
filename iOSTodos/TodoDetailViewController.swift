@@ -40,7 +40,7 @@ class TodoDetailViewController: UIViewController {
     }
     
     @IBAction func save(sender: AnyObject) {
-        //self.createTodo()
+        self.createTodo()
         self.dismissViewController()
     }
 

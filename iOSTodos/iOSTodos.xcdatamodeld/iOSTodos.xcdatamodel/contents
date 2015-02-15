@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Todos" representedClassName="Todos" syncable="YES">
+    <entity name="Todos" representedClassName="iOSTodos.Todos" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>

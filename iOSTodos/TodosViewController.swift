@@ -26,6 +26,25 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    // MARK: - Table view data source
+
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        let numberOfSections = fetchedResultController.sections?.count
+        return numberOfSections!
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let numberOfRowsInsection = fetchedResultController.sections?[section].numberOfObjects
+        return numberOfRowsInsection!
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let todo = fetchedResultController.objectAtIndexPath(indexPath) as Todos
+        cell.textLabel?.text = todo.content
+        return cell
+    }
     
     func getFetchedResultController() -> NSFetchedResultsController {
         fetchedResultController = NSFetchedResultsController(fetchRequest: self.todoFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
@@ -38,30 +57,10 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
-        // Return the number of sections.
-        return 0
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController!) {
+        tableView.reloadData()
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete method implementation.
-        // Return the number of rows in the section.
-        return 0
-    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -71,17 +70,6 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
     }
     */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
     /*
     // Override to support rearranging the table view.
