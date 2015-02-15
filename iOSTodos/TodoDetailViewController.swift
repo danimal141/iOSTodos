@@ -14,20 +14,21 @@ class TodoDetailViewController: UIViewController {
     @IBOutlet weak var textLabel: UITextField!
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    var todo: Todos?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if todo != nil {
+            self.textLabel.text = todo?.content
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func dismissViewController() {
-        //※Can not use dismissViewControllerAnimated
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -39,22 +40,21 @@ class TodoDetailViewController: UIViewController {
         managedObjectContext?.save(nil)
     }
     
+    func editTodo() {
+        todo?.content = self.textLabel.text
+        managedObjectContext?.save(nil)
+    }
+    
     @IBAction func save(sender: AnyObject) {
-        self.createTodo()
+        if todo != nil {
+            self.editTodo()
+        } else {
+            self.createTodo()
+        }
         self.dismissViewController()
     }
 
     @IBAction func cancel(sender: AnyObject) {
         self.dismissViewController()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

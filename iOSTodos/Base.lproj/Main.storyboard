@@ -19,6 +19,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qth-gy-X76" id="hDm-9x-PoV">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="UTv-gE-KEh" kind="show" identifier="edit" id="ZQC-Bc-et2"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -29,7 +32,7 @@
                     <navigationItem key="navigationItem" title="Todos" id="4ep-gR-vy3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="rot-ZI-llG">
                             <connections>
-                                <segue destination="UTv-gE-KEh" kind="show" id="0Wc-T8-og4"/>
+                                <segue destination="UTv-gE-KEh" kind="show" identifier="" id="0Wc-T8-og4"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -102,4 +105,7 @@
             <point key="canvasLocation" x="243" y="141"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZQC-Bc-et2"/>
+    </inferredMetricsTieBreakers>
 </document>
