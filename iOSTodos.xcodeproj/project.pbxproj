@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		1E76340D1A907BF6007477B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E76340C1A907BF6007477B5 /* AppDelegate.swift */; };
 		1E7634101A907BF7007477B5 /* iOSTodos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E76340E1A907BF7007477B5 /* iOSTodos.xcdatamodeld */; };
-		1E7634121A907BF7007477B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7634111A907BF7007477B5 /* ViewController.swift */; };
 		1E7634151A907BF7007477B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E7634131A907BF7007477B5 /* Main.storyboard */; };
 		1E7634171A907BF7007477B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E7634161A907BF7007477B5 /* Images.xcassets */; };
 		1E76341A1A907BF7007477B5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E7634181A907BF7007477B5 /* LaunchScreen.xib */; };
 		1E7634261A907BF7007477B5 /* iOSTodosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7634251A907BF7007477B5 /* iOSTodosTests.swift */; };
+		1E7634301A907D34007477B5 /* TodosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E76342F1A907D34007477B5 /* TodosViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +31,13 @@
 		1E76340B1A907BF6007477B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E76340C1A907BF6007477B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E76340F1A907BF7007477B5 /* iOSTodos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSTodos.xcdatamodel; sourceTree = "<group>"; };
-		1E7634111A907BF7007477B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1E7634141A907BF7007477B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E7634161A907BF7007477B5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1E7634191A907BF7007477B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1E76341F1A907BF7007477B5 /* iOSTodosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTodosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E7634241A907BF7007477B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E7634251A907BF7007477B5 /* iOSTodosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTodosTests.swift; sourceTree = "<group>"; };
+		1E76342F1A907D34007477B5 /* TodosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				1E76340C1A907BF6007477B5 /* AppDelegate.swift */,
-				1E7634111A907BF7007477B5 /* ViewController.swift */,
+				1E76342F1A907D34007477B5 /* TodosViewController.swift */,
 				1E7634131A907BF7007477B5 /* Main.storyboard */,
 				1E7634161A907BF7007477B5 /* Images.xcassets */,
 				1E7634181A907BF7007477B5 /* LaunchScreen.xib */,
@@ -215,7 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E7634121A907BF7007477B5 /* ViewController.swift in Sources */,
+				1E7634301A907D34007477B5 /* TodosViewController.swift in Sources */,
 				1E76340D1A907BF6007477B5 /* AppDelegate.swift in Sources */,
 				1E7634101A907BF7007477B5 /* iOSTodos.xcdatamodeld in Sources */,
 			);
