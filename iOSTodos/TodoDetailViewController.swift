@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoDetailViewController: UIViewController {
 
     @IBOutlet weak var textLabel: UITextField!
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +31,16 @@ class TodoDetailViewController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    func createTodo() {
+        let entityDescripition = NSEntityDescription.entityForName("Todos", inManagedObjectContext: managedObjectContext!)
+        let todo = Todos(entity: entityDescripition!, insertIntoManagedObjectContext: managedObjectContext)
+        
+        todo.content = self.textLabel.text
+        managedObjectContext?.save(nil)
+    }
+    
     @IBAction func save(sender: AnyObject) {
+        //self.createTodo()
         self.dismissViewController()
     }
 
