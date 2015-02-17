@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class TodoDetailViewController: UIViewController {
+class TodoDetailViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
     
@@ -18,6 +18,7 @@ class TodoDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.textField.delegate = self
         
         if todo != nil {
             self.textField.text = todo?.content
@@ -26,6 +27,11 @@ class TodoDetailViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func dismissViewController() {

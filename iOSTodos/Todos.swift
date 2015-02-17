@@ -25,5 +25,4 @@ class Todos: NSManagedObject {
         }
         return true
     }
-
 }
