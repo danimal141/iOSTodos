@@ -26,11 +26,6 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
         super.didReceiveMemoryWarning()
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        let numberOfSections = fetchedResultController.sections?.count
-        return numberOfSections!
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowsInsection = fetchedResultController.sections?[section].numberOfObjects
         return numberOfRowsInsection!
