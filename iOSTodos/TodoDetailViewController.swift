@@ -13,33 +13,31 @@ class TodoDetailViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
     
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var todo: Todos?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.textField.delegate = self
-        
-        if todo != nil {
-            self.textField.text = todo?.content
-        }
+
+        if let todo = self.todo { self.textField.text = todo.content }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return false
     }
-    
+
     func dismissViewController() {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    func showAlert() {
-        let alertController = UIAlertController(title: "Error", message: "Content is empty!", preferredStyle: .Alert)
+    func showAlert(message: String?) {
+        let alertController = UIAlertController(title: "Error", message: (message ?? ""), preferredStyle: .Alert)
         let dafaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertController.addAction(dafaultAction)
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -47,22 +45,26 @@ class TodoDetailViewController: UIViewController, UITextFieldDelegate {
     
     func checkContentAndSave() {
         var error: NSError?
-        if !managedObjectContext!.save(&error) {
-            showAlert()
-            managedObjectContext!.rollback()
+        do {
+            try managedObjectContext?.save()
+        } catch let err as NSError {
+            error = err
+            self.showAlert(error?.localizedDescription)
+            managedObjectContext?.rollback()
         }
     }
     
     func createTodo() {
         let entity = NSEntityDescription.entityForName("Todos", inManagedObjectContext: managedObjectContext!)
         let todo = Todos(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
-        
-        todo.content = self.textField.text
+        guard let text = self.textField.text else { return }
+        todo.content = text
         self.checkContentAndSave()
     }
     
     func editTodo() {
-        todo?.content = self.textField.text
+        guard let todo = self.todo, let text = self.textField.text else { return }
+        todo.content = text
         self.checkContentAndSave()
     }
     

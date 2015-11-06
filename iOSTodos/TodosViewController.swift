@@ -11,7 +11,7 @@ import CoreData
 
 class TodosViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
 
     override func viewDidLoad() {
@@ -19,7 +19,10 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
 
         fetchedResultController = self.getFetchedResultController()
         fetchedResultController.delegate = self
-        fetchedResultController.performFetch(nil)
+        do {
+            try fetchedResultController.performFetch()
+        } catch _ {
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,25 +35,24 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
-        let todo = fetchedResultController.objectAtIndexPath(indexPath) as Todos
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let todo = fetchedResultController.objectAtIndexPath(indexPath) as! Todos
         cell.textLabel?.text = todo.content
         return cell
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let managedObject: NSManagedObject = fetchedResultController.objectAtIndexPath(indexPath) as NSManagedObject
+        let managedObject: NSManagedObject = fetchedResultController.objectAtIndexPath(indexPath) as! NSManagedObject
         managedObjectContext?.deleteObject(managedObject)
-        managedObjectContext?.save(nil)
+        try! managedObjectContext?.save()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "edit" {
-            let cell = sender as UITableViewCell
+            let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPathForCell(cell)
-            let todoDetailController: TodoDetailViewController = segue.destinationViewController as TodoDetailViewController
-            let todo: Todos = fetchedResultController.objectAtIndexPath(indexPath!) as Todos
-            
+            let todoDetailController: TodoDetailViewController = segue.destinationViewController as! TodoDetailViewController
+            let todo: Todos = fetchedResultController.objectAtIndexPath(indexPath!) as! Todos
             todoDetailController.todo = todo
         }
     }
@@ -67,7 +69,7 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
         return fetchRequest
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController!) {
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
     }
 }

@@ -13,16 +13,17 @@ class Todos: NSManagedObject {
 
     @NSManaged var content: String
     
-    func validateContent(ioValue: AutoreleasingUnsafeMutablePointer<AnyObject?>, error: NSErrorPointer) -> Bool {
+    func validateContent(ioValue: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws {
+        let error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
         if let content = ioValue.memory as? String {
-            if content == "" {
-                println("Content is empty...")
-                return false
+            if content.isEmpty {
+                print("Content is empty...")
+                throw error
             }
         } else {
-            println("Content is nil...")
-            return false
+            print("Content is nil...")
+            throw error
         }
-        return true
     }
+    
 }

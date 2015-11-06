@@ -42,7 +42,6 @@
 		1E76342F1A907D34007477B5 /* TodosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
 		1E7634331A9087F8007477B5 /* TodoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoDetailViewController.swift; sourceTree = "<group>"; };
 		1E9854A91A90963900D873B2 /* Todos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todos.swift; sourceTree = "<group>"; };
-		1E9854AB1A90995300D873B2 /* iOSTodos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "iOSTodos-Bridging-Header.h"; path = "../../../../../.Trash/iOSTodos-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +86,6 @@
 				1E76340C1A907BF6007477B5 /* AppDelegate.swift */,
 				1E76342F1A907D34007477B5 /* TodosViewController.swift */,
 				1E7634331A9087F8007477B5 /* TodoDetailViewController.swift */,
-				1E9854AB1A90995300D873B2 /* iOSTodos-Bridging-Header.h */,
 				1E9854A91A90963900D873B2 /* Todos.swift */,
 				1E7634131A907BF7007477B5 /* Main.storyboard */,
 				1E7634161A907BF7007477B5 /* Images.xcassets */,
@@ -167,6 +165,8 @@
 		1E7633FF1A907BF5007477B5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = danimal141;
 				TargetAttributes = {
