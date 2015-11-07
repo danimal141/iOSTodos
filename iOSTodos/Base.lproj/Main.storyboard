@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ghy-e4-F0V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ghy-e4-F0V">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -15,8 +16,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Qth-gy-X76">
+                                <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qth-gy-X76" id="hDm-9x-PoV">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -41,10 +44,10 @@
             </objects>
             <point key="canvasLocation" x="1055" y="141"/>
         </scene>
-        <!--Todo Detail-->
+        <!--Todo Details-->
         <scene sceneID="qoc-HH-1oi">
             <objects>
-                <viewController id="UTv-gE-KEh" customClass="TodoDetailViewController" customModule="iOSTodos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UTv-gE-KEh" customClass="TodoDetailsViewController" customModule="iOSTodos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z4F-GA-Zun"/>
                         <viewControllerLayoutGuide type="bottom" id="9i3-Kc-Zd3"/>
@@ -53,7 +56,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rqb-t3-I9h">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rqb-t3-I9h">
                                 <rect key="frame" x="36" y="104" width="528" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -66,7 +69,7 @@
                             <constraint firstItem="Rqb-t3-I9h" firstAttribute="centerX" secondItem="2dI-AQ-fL4" secondAttribute="centerX" id="vsI-dH-FNm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Todo Detail" id="YQl-X0-NhY">
+                    <navigationItem key="navigationItem" title="Todo Details" id="YQl-X0-NhY">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zmp-VL-Vlr">
                             <connections>
                                 <action selector="cancel:" destination="UTv-gE-KEh" id="133-qb-MTb"/>

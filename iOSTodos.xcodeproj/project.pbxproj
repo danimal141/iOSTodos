@@ -14,7 +14,7 @@
 		1E76341A1A907BF7007477B5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E7634181A907BF7007477B5 /* LaunchScreen.xib */; };
 		1E7634261A907BF7007477B5 /* iOSTodosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7634251A907BF7007477B5 /* iOSTodosTests.swift */; };
 		1E7634301A907D34007477B5 /* TodosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E76342F1A907D34007477B5 /* TodosViewController.swift */; };
-		1E7634341A9087F8007477B5 /* TodoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7634331A9087F8007477B5 /* TodoDetailViewController.swift */; };
+		1E7634341A9087F8007477B5 /* TodoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7634331A9087F8007477B5 /* TodoDetailsViewController.swift */; };
 		1E9854AA1A90963900D873B2 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9854A91A90963900D873B2 /* Todo.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +40,7 @@
 		1E7634241A907BF7007477B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E7634251A907BF7007477B5 /* iOSTodosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSTodosTests.swift; sourceTree = "<group>"; };
 		1E76342F1A907D34007477B5 /* TodosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
-		1E7634331A9087F8007477B5 /* TodoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoDetailViewController.swift; sourceTree = "<group>"; };
+		1E7634331A9087F8007477B5 /* TodoDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoDetailsViewController.swift; sourceTree = "<group>"; };
 		1E9854A91A90963900D873B2 /* Todo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -85,7 +85,7 @@
 			children = (
 				1E76340C1A907BF6007477B5 /* AppDelegate.swift */,
 				1E76342F1A907D34007477B5 /* TodosViewController.swift */,
-				1E7634331A9087F8007477B5 /* TodoDetailViewController.swift */,
+				1E7634331A9087F8007477B5 /* TodoDetailsViewController.swift */,
 				1E9854A91A90963900D873B2 /* Todo.swift */,
 				1E7634131A907BF7007477B5 /* Main.storyboard */,
 				1E7634161A907BF7007477B5 /* Images.xcassets */,
@@ -224,7 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E7634301A907D34007477B5 /* TodosViewController.swift in Sources */,
-				1E7634341A9087F8007477B5 /* TodoDetailViewController.swift in Sources */,
+				1E7634341A9087F8007477B5 /* TodoDetailsViewController.swift in Sources */,
 				1E76340D1A907BF6007477B5 /* AppDelegate.swift in Sources */,
 				1E9854AA1A90963900D873B2 /* Todo.swift in Sources */,
 				1E7634101A907BF7007477B5 /* iOSTodos.xcdatamodeld in Sources */,

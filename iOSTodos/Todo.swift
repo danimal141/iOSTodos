@@ -14,7 +14,7 @@ class Todo: NSManagedObject {
     @NSManaged var content: String
     
     func validateContent(ioValue: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws {
-        let error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
+        let error = NSError(domain: "Migrator", code: 0, userInfo: nil)
         if let content = ioValue.memory as? String {
             if content.isEmpty {
                 print("Content is empty...")

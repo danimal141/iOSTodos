@@ -10,17 +10,33 @@ import UIKit
 import CoreData
 
 class TodosViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+
+    // MARK: - Properties
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
+
+    lazy var fetchedResultController: NSFetchedResultsController = {
+        guard let managedObjectContext = self.managedObjectContext else { return NSFetchedResultsController() }
+        let fetchedResultController = NSFetchedResultsController(fetchRequest: self.todoFetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController.delegate = self
+        return fetchedResultController
+    }()
+
+    lazy var todoFetchRequest: NSFetchRequest = {
+        let fetchRequest = NSFetchRequest(entityName: "Todo")
+        let sortDescriptor = NSSortDescriptor(key: "content", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        return fetchRequest
+    }()
+
+
+    // MARK: - Lifecycles
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fetchedResultController = self.getFetchedResultController()
-        fetchedResultController.delegate = self
         do {
-            try fetchedResultController.performFetch()
+            try self.fetchedResultController.performFetch()
         } catch _ {
         }
     }
@@ -29,48 +45,52 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
         super.didReceiveMemoryWarning()
     }
 
+
+     // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        switch segue.identifier {
+        case .Some("Edit"):
+            guard let cell = sender as? UITableViewCell else { return }
+            guard let indexPath = self.tableView.indexPathForCell(cell) else { return }
+            let todo = self.fetchedResultController.objectAtIndexPath(indexPath) as? Todo
+            let todoDetailsController = segue.destinationViewController as! TodoDetailsViewController
+            todoDetailsController.todo = todo
+        default: break
+        }
+    }
+
+
+    // MARK: - UITableViewDataSource protocol
+
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRowsInsection = fetchedResultController.sections?[section].numberOfObjects
-        return numberOfRowsInsection!
+        let numberOfRowsInsection = self.fetchedResultController.sections?[section].numberOfObjects
+        return numberOfRowsInsection ?? 0
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        let todo = fetchedResultController.objectAtIndexPath(indexPath) as! Todo
+        let todo = self.fetchedResultController.objectAtIndexPath(indexPath) as! Todo
         cell.textLabel?.text = todo.content
         return cell
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        let managedObject: NSManagedObject = fetchedResultController.objectAtIndexPath(indexPath) as! NSManagedObject
-        managedObjectContext?.deleteObject(managedObject)
-        try! managedObjectContext?.save()
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "edit" {
-            let cell = sender as! UITableViewCell
-            let indexPath = tableView.indexPathForCell(cell)
-            let todoDetailController: TodoDetailViewController = segue.destinationViewController as! TodoDetailViewController
-            let todo = fetchedResultController.objectAtIndexPath(indexPath!) as! Todo
-            todoDetailController.todo = todo
+        guard let managedObject = self.fetchedResultController.objectAtIndexPath(indexPath) as? NSManagedObject else { return }
+        self.managedObjectContext?.deleteObject(managedObject)
+        do {
+            try managedObjectContext?.save()
+        } catch {
+            managedObjectContext?.rollback()
         }
     }
 
-    func getFetchedResultController() -> NSFetchedResultsController {
-        fetchedResultController = NSFetchedResultsController(fetchRequest: self.todoFetchRequest(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
-        return fetchedResultController
-    }
-    
-    func todoFetchRequest() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "Todo")
-        let sortDescriptor = NSSortDescriptor(key: "content", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        return fetchRequest
-    }
+
+    // MARK: - NSFetchedResultsControllerDelegate Protocol 
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
 
 }
