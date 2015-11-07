@@ -36,7 +36,7 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        let todo = fetchedResultController.objectAtIndexPath(indexPath) as! Todos
+        let todo = fetchedResultController.objectAtIndexPath(indexPath) as! Todo
         cell.textLabel?.text = todo.content
         return cell
     }
@@ -52,7 +52,7 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPathForCell(cell)
             let todoDetailController: TodoDetailViewController = segue.destinationViewController as! TodoDetailViewController
-            let todo: Todos = fetchedResultController.objectAtIndexPath(indexPath!) as! Todos
+            let todo = fetchedResultController.objectAtIndexPath(indexPath!) as! Todo
             todoDetailController.todo = todo
         }
     }
@@ -63,7 +63,7 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
     }
     
     func todoFetchRequest() -> NSFetchRequest {
-        let fetchRequest = NSFetchRequest(entityName: "Todos")
+        let fetchRequest = NSFetchRequest(entityName: "Todo")
         let sortDescriptor = NSSortDescriptor(key: "content", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
@@ -72,4 +72,5 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
     }
+
 }

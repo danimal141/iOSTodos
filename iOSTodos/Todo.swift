@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class Todos: NSManagedObject {
+class Todo: NSManagedObject {
 
     @NSManaged var content: String
     

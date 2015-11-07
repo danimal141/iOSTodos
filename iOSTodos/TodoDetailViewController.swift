@@ -14,7 +14,7 @@ class TodoDetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textField: UITextField!
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    var todo: Todos?
+    var todo: Todo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +55,8 @@ class TodoDetailViewController: UIViewController, UITextFieldDelegate {
     }
     
     func createTodo() {
-        let entity = NSEntityDescription.entityForName("Todos", inManagedObjectContext: managedObjectContext!)
-        let todo = Todos(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+        let entity = NSEntityDescription.entityForName("Todo", inManagedObjectContext: managedObjectContext!)
+        let todo = Todo(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
         guard let text = self.textField.text else { return }
         todo.content = text
         self.checkContentAndSave()
@@ -80,4 +80,5 @@ class TodoDetailViewController: UIViewController, UITextFieldDelegate {
     @IBAction func cancel(sender: AnyObject) {
         self.dismissViewController()
     }
+
 }
