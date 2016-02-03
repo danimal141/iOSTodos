@@ -22,7 +22,7 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
         return fetchedResultController
     }()
 
-    lazy var todoFetchRequest: NSFetchRequest = {
+    let todoFetchRequest: NSFetchRequest = {
         let fetchRequest = NSFetchRequest(entityName: "Todo")
         let sortDescriptor = NSSortDescriptor(key: "content", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
@@ -70,8 +70,8 @@ class TodosViewController: UITableViewController, NSFetchedResultsControllerDele
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        guard let todo = self.fetchedResultController.objectAtIndexPath(indexPath) as? Todo else { fatalError("Todo is invalid") }
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
-        let todo = self.fetchedResultController.objectAtIndexPath(indexPath) as! Todo
         cell.textLabel?.text = todo.content
         return cell
     }
